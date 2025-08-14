@@ -1,51 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
+    <!-- Import our external library, Tone.js -->
+    <!-- Note that unlike the other code files we want it to load before anything else so we don't include defer -->
+    <script src="http://unpkg.com/tone"></script>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Import our CSS stylesheets -->
+    <link rel="stylesheet" href="style.css" />
 
-  <!-- Import our external library, Tone.js -->
-  <!-- Note that unlike the other code files we want it to load before anything else so we don't include defer -->
-  <script src="http://unpkg.com/tone"></script>
-
-  <!-- Import our CSS stylesheets -->
-  <link rel="stylesheet" href="style.css">
-
-  <!-- Import our JS files -->
-  <!-- As these reference to DOM elements, we want to load them after it has loaded, so we use the defer property -->
-  <!-- https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/defer -->
-  <!-- This first script has some functions for generic tasks -->
-   <script src="helperFunctions.js" defer></script>
-  <!-- This second script initialises the audio synthesizer system using tone -->
-  <script src="toneSetup.js" defer></script>
-  <!-- This third script handles sending notes from the keyboard controller to the synthesizer, again kept seperate
+    <!-- Import our JS files -->
+    <!-- As these reference to DOM elements, we want to load them after it has loaded, so we use the defer property -->
+    <!-- https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/defer -->
+    <!-- This first script has some functions for generic tasks -->
+    <script src="helperFunctions.js" defer></script>
+    <!-- This second script initialises the audio synthesizer system using tone -->
+    <script src="toneSetup.js" defer></script>
+    <!-- This third script handles sending notes from the keyboard controller to the synthesizer, again kept seperate
        so that it can be modular -->
-  <script src="keyboardController.js" defer></script>
-  <!-- The last script handles connecting the UI to the synthesizer : this is where you'll be working -->
-  <script src="UIControls.js" defer></script>
+    <script src="keyboardController.js" defer></script>
+    <!-- The last script handles connecting the UI to the synthesizer : this is where you'll be working -->
+    <script src="UIControls.js" defer></script>
 
-  <title>Synth UI Exercise</title>
+    <title>Synth UI Exercise</title>
 
-  <!-- favicon was sourced from favicon.io but the original graphics are copyright 2020 Twitter, Inc 
+    <!-- favicon was sourced from favicon.io but the original graphics are copyright 2020 Twitter, Inc 
        and other contributors -->
-  <!-- They are licensed under CC-BY 4.0 as linked below -->
-  <!-- https://creativecommons.org/licenses/by/4.0/ -->
-  <link rel="icon" type="image/png" href="./assets/favicon.png">
-  
-</head>
+    <!-- They are licensed under CC-BY 4.0 as linked below -->
+    <!-- https://creativecommons.org/licenses/by/4.0/ -->
+    <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  </head>
 
   <body>
-
     <!-- Intro Modal popup -->
     <!-- Websites are subject to an autoplay policy, so need user interaction before making sound -->
     <!-- In this case we use the interaction of closing the modal to trigger loading the synth -->
-    <!-- https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Autoplay -->    
+    <!-- https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Autoplay -->
     <dialog id="introDialog">
-      <p>This synthesizer will make some noise, please check your system's volume setting.</p>
+      <p>
+        This synthesizer will make some noise, please check your system's volume
+        setting.
+      </p>
       <button id="dialogCloseButton" autofocus>OK</button>
     </dialog>
+
+    <label for="tempB">Choose a frequency cutoff:</label><br />
+
+    <input
+      type="range"
+      id="frequencySlider"
+      min="0"
+      max="20000"
+      list="markers"
+    />
+
+    <datalist id="markers">
+      <option value="0" label="0 Hz"></option>
+      <option value="5000" label="5 kHz"></option>
+      <option value="10000" label="10 kHz"></option>
+      <option value="15000" label="15 kHz"></option>
+      <option value="20000" label="20 kHz"></option>
+    </datalist>
 
     <!-- Keyboard Controller -->
     <div class="keyboardCont">
@@ -72,9 +89,5 @@
         </div>
       </div>
     </div>
-
-    </div>
-
   </body>
-
 </html>
