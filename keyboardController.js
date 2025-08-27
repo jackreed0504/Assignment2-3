@@ -1,6 +1,6 @@
 /* this is where you'd change out what the keyboard is controlling */
-/* as its imported AFTER script.js where polySynth is defined I can assign it here */
-let keyboardSynth = polySynth;
+/* as its imported AFTER script.js where sampler is defined I can assign it here */
+let keyboardSynth = sampler;
 //let keyboardSynth = sampler;
 
 /* find keys by their class and add to array */
@@ -24,21 +24,21 @@ window.addEventListener("mouseup", () => {
 allKeys.forEach((key) => {
   key.addEventListener("mousedown", (e) => {
     let note = e.target.dataset.note;
-    polySynth.triggerAttack(note + octave);
+    sampler.triggerAttack(note + octave);
   });
   key.addEventListener("mouseup", (e) => {
     let note = e.target.dataset.note;
-    polySynth.triggerRelease(note + octave);
+    sampler.triggerRelease(note + octave);
   });
   key.addEventListener("mouseenter", (e) => {
     if (keyPressed === false) {
       return;
     }
     let note = e.target.dataset.note;
-    polySynth.triggerAttack(note + octave);
+    sampler.triggerAttack(note + octave);
   });
   key.addEventListener("mouseleave", (e) => {
     let note = e.target.dataset.note;
-    polySynth.triggerRelease(note + octave);
+    sampler.triggerRelease(note + octave);
   });
 });
