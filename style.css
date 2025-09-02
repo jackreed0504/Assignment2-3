@@ -1,138 +1,67 @@
-/* .:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:. .:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.  */
-/* Font Imports */
-
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
-
-/* .:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:. .:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.  */
-/* CSS Reset : based on Kevin Powell's code */
-/* https://youtu.be/2lyDv0wOQuQ?si=VtGSWSv8WB0flLd1 */
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-datalist {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  writing-mode: vertical-lr;
-  width: 200px;
-}
-
-option {
-  padding: 0;
-}
-
-input[type="range"] {
-  width: 200px;
-  margin: 0;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  color-scheme: dark light;
-}
-
 body {
+  overflow-y: hidden;
   min-height: 100vh;
+  background-image: linear-gradient(#4cd3c8, #005767);
 }
 
-img,
-picture,
-svg,
-video {
-  display: block;
-  max-width: 100%;
-}
-
-/* .:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:. .:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.  */
-/* Storing custom CSS properties */
-/* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties */
-
-:root {
-  --col01: rgb(79, 247, 244);
-  --col02: rgb(42, 42, 42);
-  --border: solid 0.1rem var(--col02);
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --col02: rgb(79, 247, 244);
-    --col01: rgb(42, 42, 42);
-  }
-}
-
-/* .:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:. .:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.  */
-/* Intro Modal dialog */
-/* need to apply to open dialog, otherwise flex interferes with closing */
-
-dialog[open] {
-  margin: auto; /* place in centre */
-  padding: 1rem;
-  background-color: var(--col01);
-  color: var(--col02);
-  border: var(--border);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-dialog::backdrop {
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.5
-  ); /* background overlay when modal is open */
-}
-#dialogCloseButton {
-  /* background-color: var(--col01); */
-  /* color: var(--col02); */
-  padding: 0 1rem;
-}
-.keyboardCont {
-  display: flex;
-  height: 10rem;
-}
-.octaveCont {
-  position: relative;
-  width: 15rem;
-}
-.whiteKeyCont {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  align-items: stretch;
-}
-.whiteKey {
-  flex: 1;
-  background-color: white;
-  background-image: linear-gradient(rgb(39, 208, 255), rgb(175, 255, 248));
-}
-.whiteKey:hover {
-  cursor: pointer;
-}
-.whiteKey:active {
-}
-.blackKeyCont {
+.pillar-container {
+  width: 100px;
+  height: 900px;
   position: absolute;
-  top: 0%;
-  display: flex;
-  height: 50%;
+  transform-style: preserve-3d;
+  transform: rotateX(-20deg) rotateY(45deg);
+}
+
+/* pillar faces */
+
+.face {
+  position: absolute;
   width: 100%;
-  align-items: stretch;
+  height: 100%;
 }
-.blackKey {
-  flex: 1;
-  background-image: linear-gradient(rgb(243, 232, 255), rgb(242, 200, 255));
+.front {
+  transform: translateZ(50px);
+  background-color: #ec8b82;
 }
-.ghostKey {
-  flex: 0.5;
-  opacity: 0;
-  pointer-events: none;
+.back {
+  transform: rotateY(180deg) translateZ(50px);
+  background-color: #ec8b82;
+}
+.right {
+  transform: rotateY(90deg) translateZ(50px);
+  background-color: #ec8b82;
+}
+.right {
+  transform: rotateY(-90deg) translateZ(50px);
+  background-color: #ec9d7c;
+}
+.top {
+  height: 100px;
+  transform: rotateX(90deg) translateZ(50px);
+  background-color: #fac6a3;
+}
+.bottom {
+  height: 100px;
+  transform: rotateX(-90deg) translateZ(50px);
+  background-color: #ec8b82;
+}
+
+/* pillar positions */
+
+#one {
+  position: absolute;
+  top: 10rem;
+  left: 46.8rem;
+}
+
+#two {
+  position: absolute;
+  left: 51.1rem;
+  top: 20rem;
+}
+
+#three {
+  position: absolute;
+  left: 42.4rem;
+  top: 30rem;
 }

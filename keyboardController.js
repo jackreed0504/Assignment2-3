@@ -1,44 +1,44 @@
 /* this is where you'd change out what the keyboard is controlling */
-/* as its imported AFTER script.js where sampler is defined I can assign it here */
-let keyboardSynth = sampler;
-//let keyboardSynth = sampler;
+/* as its imported AFTER script.js where players is defined I can assign it here */
+// let keyboardSynth = players;
+//let keyboardSynth = players;
 
 /* find keys by their class and add to array */
-let allKeys = Array.from(document.getElementsByClassName("whiteKey")).concat(
-  Array.from(document.getElementsByClassName("blackKey"))
-);
+// let allKeys = Array.from(document.getElementsByClassName("whiteKey")).concat(
+//   Array.from(document.getElementsByClassName("blackKey"))
+// );
 
 /* set default octace : we will update based on keys later on */
-let octave = 3;
+// let octave = 3;
 
-let keyPressed = false;
+// let keyPressed = false;
 
-window.addEventListener("mousedown", () => {
-  keyPressed = true;
-});
-window.addEventListener("mouseup", () => {
-  keyPressed = false;
-});
+// window.addEventListener("mousedown", () => {
+//   keyPressed = true;
+// });
+// window.addEventListener("mouseup", () => {
+//   keyPressed = false;
+// });
 
-/* add an event listener to each key */
-allKeys.forEach((key) => {
-  key.addEventListener("mousedown", (e) => {
-    let note = e.target.dataset.note;
-    sampler.triggerAttack(note + octave);
-  });
-  key.addEventListener("mouseup", (e) => {
-    let note = e.target.dataset.note;
-    sampler.triggerRelease(note + octave);
-  });
-  key.addEventListener("mouseenter", (e) => {
-    if (keyPressed === false) {
-      return;
-    }
-    let note = e.target.dataset.note;
-    sampler.triggerAttack(note + octave);
-  });
-  key.addEventListener("mouseleave", (e) => {
-    let note = e.target.dataset.note;
-    sampler.triggerRelease(note + octave);
-  });
-});
+// /* add an event listener to each key */
+// allKeys.forEach((key) => {
+//   key.addEventListener("mousedown", (e) => {
+//     let note = e.target.dataset.note;
+//     players.triggerAttack(note + octave);
+//   });
+//   key.addEventListener("mouseup", (e) => {
+//     let note = e.target.dataset.note;
+//     players.triggerRelease(note + octave);
+//   });
+//   key.addEventListener("mouseenter", (e) => {
+//     if (keyPressed === false) {
+//       return;
+//     }
+//     let note = e.target.dataset.note;
+//     players.triggerAttack(note + octave);
+//   });
+//   key.addEventListener("mouseleave", (e) => {
+//     let note = e.target.dataset.note;
+//     players.triggerRelease(note + octave);
+//   });
+// });

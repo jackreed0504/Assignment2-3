@@ -1,33 +1,17 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////// Polyphonic Synthesizer
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-let polySynth = new Tone.PolySynth(Tone.Synth, {
-  oscillator: {
-    type: "fatsawtooth",
-    count: 3,
-    spread: 10,
-  },
-  envelope: {
-    attack: 0.01,
-    decay: 0.1,
-    sustain: 0.5,
-    release: 0.1,
-    attackCurve: "exponential",
-  },
-});
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////// Sampler
+///////// Players
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-let sampler = new Tone.Sampler({
+let players = new Tone.Players({
   urls: {
-    D2: "mel_low_d.wav",
-    C3: "four.m4a",
-    F3: "FX-ZomerSchimmering.wav",
+    zomer: "track_two.mp3",
+    melLow: "track_one.mp3",
   },
   baseUrl: "./assets/audioSamples/",
 });
+
+players.player("zomer").loop = true;
+players.player("melLow").loop = true;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// Audio Effects
@@ -55,5 +39,9 @@ function toneInit() {
   // polySynth.chain(filter, distortion, reverb, delay, meter, Tone.Destination);
   // This is an alternative statement if the sampler is instead chosen : the only difference is the variable name
   // The sampler above must be uncommented for this to work, as well as the declaration on line 3 of keyboardController.js
-  sampler.chain(filter, distortion, meter, Tone.Destination);
+  players.chain(filter, distortion, meter, Tone.Destination);
+  players.player("zomer").start();
+  players.player("melLow").start();
+  //  Tone.Transport.start();
+  Tone.start();
 }
