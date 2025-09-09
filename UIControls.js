@@ -8,6 +8,8 @@ const delayFeedbackInput = document.getElementById("delayFeedbackInput");
 
 const meterOutput = document.getElementById("meterOutput");
 
+const diamond = document.querySelector(".diamond-container");
+
 // const pillarWrapper = document.querySelectorAll(".pillar-wrapper");
 const pillarOne = document.getElementById("one");
 const pillarTwo = document.getElementById("two");
@@ -223,5 +225,5 @@ changeReverbDecay(2);
 toggleReverb(false);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////// Meter
+///////// Diamond animation
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////

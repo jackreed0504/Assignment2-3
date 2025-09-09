@@ -12,6 +12,51 @@ body {
   transform: rotateX(-20deg) rotateY(45deg);
 }
 
+@keyframes diamondAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+/* @keyframes turningAnimation {
+  from {transform: rotateY(0); }
+  to {transform: rotateY(180deg); }
+} */
+
+.sphere {
+  width: 100px;
+  height: 100px;
+  top: 30rem;
+  left: 75rem;
+  position: absolute;
+  border-radius: 50%;
+  background-image: radial-gradient(circle at 35% 30%, #6dc5e3, #8781bf);
+  animation: diamondAnimation 8s infinite alternate;
+}
+
+.diamond-container {
+  width: 100px;
+  height: 100px;
+  top: 20rem;
+  left: 20rem;
+  position: absolute;
+  transform-style: preserve-3d;
+  transform: rotateX(-30deg) rotateY(45deg);
+}
+
+.diamond-wrapper {
+  transform-origin: 20rem 20rem;
+  animation: diamondAnimation 10s infinite alternate;
+  animation: turningAnimation 10s infinite alternate;
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
 /* pillar faces */
 
 .face {
@@ -31,7 +76,7 @@ body {
   transform: rotateY(90deg) translateZ(50px);
   background-color: #ec8b82;
 }
-.right {
+.left {
   transform: rotateY(-90deg) translateZ(50px);
   background-color: #ec9d7c;
 }
@@ -44,6 +89,38 @@ body {
   height: 100px;
   transform: rotateX(-90deg) translateZ(50px);
   background-color: #ec8b82;
+}
+
+/* diamond faces */
+
+.diamond {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.fr {
+  transform: translateZ(50px);
+  border-top: 50px solid transparent; /* Controls the height of the triangle */
+  border-bottom: 50px solid transparent; /* Controls the height of the triangle */
+  border-left: 100px solid #738adf;
+}
+.ba {
+  transform: rotateY(180deg) translateZ(50px);
+  border-top: 50px solid transparent; /* Controls the height of the triangle */
+  border-bottom: 50px solid transparent; /* Controls the height of the triangle */
+  border-left: 100px solid #eafafd;
+}
+.ri {
+  transform: rotateY(90deg) translateZ(50px);
+  border-top: 50px solid transparent; /* Controls the height of the triangle */
+  border-bottom: 50px solid transparent; /* Controls the height of the triangle */
+  border-right: 100px solid #d1f8ff;
+}
+.le {
+  transform: rotateY(-90deg) translateZ(50px);
+  border-top: 50px solid transparent; /* Controls the height of the triangle */
+  border-bottom: 50px solid transparent; /* Controls the height of the triangle */
+  border-right: 100px solid #98e5fd;
 }
 
 /* pillar positions */
