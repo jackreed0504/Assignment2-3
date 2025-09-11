@@ -23,10 +23,14 @@ body {
     transform: translateY(0);
   }
 }
-/* @keyframes turningAnimation {
-  from {transform: rotateY(0); }
-  to {transform: rotateY(180deg); }
-} */
+@keyframes turningAnimation {
+  from {
+    transform: rotateY(0);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}
 
 .sphere {
   width: 100px;
@@ -51,10 +55,10 @@ body {
 
 .diamond-wrapper {
   transform-origin: 20rem 20rem;
-  animation: diamondAnimation 10s infinite alternate;
   animation: turningAnimation 10s infinite alternate;
   position: absolute;
   transform-style: preserve-3d;
+  /* animation: diamondAnimation 10s infinite alternate; */
 }
 
 /* pillar faces */
@@ -93,35 +97,59 @@ body {
 
 /* diamond faces */
 
-.diamond {
+.facet {
   position: absolute;
   width: 100%;
   height: 100%;
 }
-.fr {
+.one {
   transform: translateZ(50px);
   border-top: 50px solid transparent; /* Controls the height of the triangle */
   border-bottom: 50px solid transparent; /* Controls the height of the triangle */
   border-left: 100px solid #738adf;
 }
-.ba {
+.two {
   transform: rotateY(180deg) translateZ(50px);
   border-top: 50px solid transparent; /* Controls the height of the triangle */
   border-bottom: 50px solid transparent; /* Controls the height of the triangle */
   border-left: 100px solid #eafafd;
 }
-.ri {
+.three {
   transform: rotateY(90deg) translateZ(50px);
   border-top: 50px solid transparent; /* Controls the height of the triangle */
   border-bottom: 50px solid transparent; /* Controls the height of the triangle */
   border-right: 100px solid #d1f8ff;
 }
-.le {
+.four {
   transform: rotateY(-90deg) translateZ(50px);
   border-top: 50px solid transparent; /* Controls the height of the triangle */
   border-bottom: 50px solid transparent; /* Controls the height of the triangle */
   border-right: 100px solid #98e5fd;
 }
+/* .five {
+  transform: translateZ(50px) rotateY(0deg) rotateX(54.74deg);
+  border-top: 50px solid transparent; 
+  border-bottom: 50px solid transparent; 
+  border-left: 100px solid #738adf;
+}
+.two {
+  transform: rotateY(180deg) translateZ(50px);
+  border-top: 50px solid transparent; 
+  border-bottom: 50px solid transparent; 
+  border-left: 100px solid #eafafd;
+}
+.three {
+  transform: rotateY(90deg) translateZ(50px);
+  border-top: 50px solid transparent; 
+  border-bottom: 50px solid transparent; 
+  border-right: 100px solid #d1f8ff;
+}
+.four {
+  transform: rotateY(-90deg) translateZ(50px);
+  border-top: 50px solid transparent; 
+  border-bottom: 50px solid transparent; 
+  border-right: 100px solid #98e5fd;
+} */
 
 /* pillar positions */
 
