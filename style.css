@@ -14,6 +14,20 @@ body {
 
 @keyframes diamondAnimation {
   0% {
+    transform: translateY(0) rotateY(0deg) rotateX(2deg) rotateZ(359deg)
+      scaleX(0.3) scaleZ(0.3);
+  }
+  50% {
+    transform: translateY(-20px) rotateY(180deg) rotateX(2deg) rotateZ(359deg)
+      scaleX(0.3) scaleZ(0.3);
+  }
+  100% {
+    transform: translateY(0) rotateY(360deg) rotateX(2deg) rotateZ(359deg)
+      scaleX(0.3) scaleZ(0.3);
+  }
+}
+@keyframes sphereAnimation {
+  0% {
     transform: translateY(0);
   }
   50% {
@@ -23,42 +37,26 @@ body {
     transform: translateY(0);
   }
 }
-@keyframes turningAnimation {
+/* @keyframes turningAnimation {
   from {
-    transform: rotateY(0);
+    transform: rotateY(0deg) rotateX(2deg) rotateZ(359deg);
   }
   to {
-    transform: rotateY(180deg);
+    transform: rotateY(360deg) rotateX(2deg) rotateZ(359deg);
   }
-}
+} */
 
 .sphere {
   width: 100px;
   height: 100px;
-  top: 30rem;
+  top: 23rem;
   left: 75rem;
   position: absolute;
   border-radius: 50%;
   background-image: radial-gradient(circle at 35% 30%, #6dc5e3, #8781bf);
   animation: diamondAnimation 8s infinite alternate;
-}
-
-.diamond-container {
-  width: 100px;
-  height: 100px;
-  top: 20rem;
-  left: 20rem;
-  position: absolute;
-  transform-style: preserve-3d;
-  transform: rotateX(-30deg) rotateY(45deg);
-}
-
-.diamond-wrapper {
-  transform-origin: 20rem 20rem;
-  animation: turningAnimation 10s infinite alternate;
-  position: absolute;
-  transform-style: preserve-3d;
-  /* animation: diamondAnimation 10s infinite alternate; */
+  animation: sphereAnimation 8s infinite alternate;
+  cursor: pointer;
 }
 
 /* pillar faces */
@@ -98,58 +96,54 @@ body {
 /* diamond faces */
 
 .facet {
+  width: 0;
+  height: 0;
   position: absolute;
-  width: 100%;
-  height: 100%;
+  border: 100px solid transparent;
+  border-bottom: 100px solid;
+  border-top: 0px;
 }
 .one {
-  transform: translateZ(50px);
-  border-top: 50px solid transparent; /* Controls the height of the triangle */
-  border-bottom: 50px solid transparent; /* Controls the height of the triangle */
-  border-left: 100px solid #738adf;
+  transform: rotateX(30deg);
+  transform-origin: 0 0;
+  border-bottom-color: #26c5f5;
 }
 .two {
-  transform: rotateY(180deg) translateZ(50px);
-  border-top: 50px solid transparent; /* Controls the height of the triangle */
-  border-bottom: 50px solid transparent; /* Controls the height of the triangle */
-  border-left: 100px solid #eafafd;
+  transform-origin: 100px 0;
+  transform: rotateY(90deg) rotateX(-30deg);
+  border-bottom-color: #63d1f9;
 }
 .three {
-  transform: rotateY(90deg) translateZ(50px);
-  border-top: 50px solid transparent; /* Controls the height of the triangle */
-  border-bottom: 50px solid transparent; /* Controls the height of the triangle */
-  border-right: 100px solid #d1f8ff;
+  transform-origin: 100px 0;
+  transform: rotateY(270deg) rotateX(-30deg);
+  border-bottom-color: #b5ebfe;
 }
 .four {
-  transform: rotateY(-90deg) translateZ(50px);
-  border-top: 50px solid transparent; /* Controls the height of the triangle */
-  border-bottom: 50px solid transparent; /* Controls the height of the triangle */
-  border-right: 100px solid #98e5fd;
+  transform-origin: 100px 0;
+  transform: rotateY(0) rotateX(-30deg);
+  border-bottom-color: hsl(195, 62%, 90%);
 }
-/* .five {
-  transform: translateZ(50px) rotateY(0deg) rotateX(54.74deg);
-  border-top: 50px solid transparent; 
-  border-bottom: 50px solid transparent; 
-  border-left: 100px solid #738adf;
+.up {
+  transform-style: preserve-3d;
+  transform: rotateX(180deg) translateY(-500px);
 }
-.two {
-  transform: rotateY(180deg) translateZ(50px);
-  border-top: 50px solid transparent; 
-  border-bottom: 50px solid transparent; 
-  border-left: 100px solid #eafafd;
+.down {
+  transform-style: preserve-3d;
+  transform: rotateY(0deg) translateY(327px);
 }
-.three {
-  transform: rotateY(90deg) translateZ(50px);
-  border-top: 50px solid transparent; 
-  border-bottom: 50px solid transparent; 
-  border-right: 100px solid #d1f8ff;
+
+.dia-wrapper {
+  cursor: pointer;
+  transform-origin: 7rem 20rem;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  transform-style: preserve-3d;
+  animation: diamondAnimation 6s infinite linear;
+  transform: rotateY(300deg) rotateX(2deg) rotateZ(359deg) scaleX(0.1);
+  /* animation: turningAnimation 8s linear;   */
+  left: 15rem;
 }
-.four {
-  transform: rotateY(-90deg) translateZ(50px);
-  border-top: 50px solid transparent; 
-  border-bottom: 50px solid transparent; 
-  border-right: 100px solid #98e5fd;
-} */
 
 /* pillar positions */
 

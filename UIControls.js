@@ -8,14 +8,16 @@ const delayFeedbackInput = document.getElementById("delayFeedbackInput");
 
 const meterOutput = document.getElementById("meterOutput");
 
-const diamond = document.querySelector(".diamond-container");
-
 // const pillarWrapper = document.querySelectorAll(".pillar-wrapper");
 const pillarOne = document.getElementById("one");
 const pillarTwo = document.getElementById("two");
 const pillarThree = document.getElementById("three");
 
 console.log(pillarOne);
+
+const diamond = document.querySelector(".dia-wrapper");
+
+const sphere = document.querySelector(".sphere");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// Volume Functions
@@ -69,8 +71,10 @@ function changeFilterQ(newFilterQ) {
 $("#one").draggable({
   axis: "y",
   drag: function (event, ui) {
-    let onePos = ui.position.top;
-    let chimesRangeValue = 10 - onePos / 40;
+    //let onePos = ui.position.top;
+    //let chimesRangeValue = 10 - onePos / 40;
+    let chimesRangeValue =
+      12 - (ui.position.top / document.documentElement.scrollHeight) * 48;
     // console.log("Current Y position:", chimesRangeValue);
     changeChimesVolume(chimesRangeValue);
   },
@@ -79,7 +83,8 @@ $("#two").draggable({
   axis: "y",
   drag: function (event, ui) {
     let twoPos = ui.position.top;
-    let filterValue = 2000 - twoPos * 3;
+    let filterValue =
+      10000 - (ui.position.top / document.documentElement.scrollHeight) * 20000;
     console.log("Current Y position:", filterValue);
     changeFilterFreq(filterValue);
   },
@@ -88,7 +93,8 @@ $("#three").draggable({
   axis: "y",
   drag: function (event, ui) {
     let threePos = ui.position.top;
-    let melRangeValue = 10 - threePos / 40;
+    let melRangeValue =
+      12 - (ui.position.top / document.documentElement.scrollHeight) * 48;
     // console.log("Current Y position:", chimesRangeValue);
     changeMelVolume(melRangeValue);
   },
@@ -176,10 +182,13 @@ function changeDelayFeedback(newFeedbackAmt) {
   delay.feedback.value = newFeedbackAmtk;
 }
 
-delayFeedbackInput.addEventListener("change", (e) => {
-  let newValue = e.target.value;
-  changeDelayFeedback(newValue);
-});
+function toggleDelay(delayOn) {
+  if (delayOn) {
+    delay.wet.value = 0.5;
+  } else {
+    delay.wet.value = 0;
+  }
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// Distortion Functions
@@ -214,16 +223,13 @@ function changeReverbDecay(newVerbDecayAmt) {
 
 function toggleReverb(verbOn) {
   if (verbOn) {
-    reverb.wet.value = 1;
+    reverb.wet.value = 0.5;
   } else {
     reverb.wet.value = 0;
   }
 }
 
-/* set initial amount and bypass it */
-changeReverbDecay(2);
-toggleReverb(false);
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////// Diamond animation
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// diamond.addEventListener('click', (e) => {
+//   verbOn = !verbOn;
+//   ToggleReverb(verbOn);
+// });

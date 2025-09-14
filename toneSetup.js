@@ -21,7 +21,11 @@ const filter = new Tone.Filter(20000, "lowpass");
 
 const distortion = new Tone.Distortion(0);
 
-const delay = new Tone.Delay("8n", 0.5);
+const delay = new Tone.FeedbackDelay({
+  delayTime: "7n",
+  feedback: 0.1,
+  wet: 0,
+});
 
 const reverb = new Tone.Reverb(2);
 
@@ -39,9 +43,29 @@ function toneInit() {
   // polySynth.chain(filter, distortion, reverb, delay, meter, Tone.Destination);
   // This is an alternative statement if the sampler is instead chosen : the only difference is the variable name
   // The sampler above must be uncommented for this to work, as well as the declaration on line 3 of keyboardController.js
-  players.chain(filter, distortion, meter, Tone.Destination);
+  players.chain(filter, reverb, delay, distortion, meter, Tone.Destination);
+
   players.player("zomer").start();
   players.player("melLow").start();
+
+  toggleReverb(false);
+
+  let verbOn = false;
+
+  diamond.addEventListener("click", (e) => {
+    verbOn = !verbOn;
+    toggleReverb(verbOn);
+  });
+
+  toggleDelay(false);
+
+  let delayOn = false;
+
+  sphere.addEventListener("click", (e) => {
+    delayOn = !delayOn;
+    toggleDelay(delayOn);
+  });
+
   //  Tone.Transport.start();
   Tone.start();
 }
