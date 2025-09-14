@@ -54,7 +54,6 @@ body {
   position: absolute;
   border-radius: 50%;
   background-image: radial-gradient(circle at 35% 30%, #6dc5e3, #8781bf);
-  animation: diamondAnimation 8s infinite alternate;
   animation: sphereAnimation 8s infinite alternate;
   cursor: pointer;
 }
