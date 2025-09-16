@@ -4,10 +4,10 @@
 
 let players = new Tone.Players({
   urls: {
-    zomer: "track_two.mp3",
-    melLow: "track_one.mp3",
+    zomer: "./assets/audioSamples/track_two.mp3",
+    melLow: "./assets/audioSamples/track_one.mp3",
   },
-  baseUrl: "./assets/audioSamples/",
+  // baseUrl: "./assets/audioSamples/",
 });
 
 players.player("zomer").loop = true;
