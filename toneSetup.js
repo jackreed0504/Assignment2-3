@@ -4,8 +4,8 @@
 
 let players = new Tone.Players({
   urls: {
-    zomer: "track_two.mp3",
-    melLow: "track_one.mp3",
+    zomer: "main_sound.mp3",
+    melLow: "drums.mp3",
   },
   baseUrl: "./assets/audioSamples/",
 });
