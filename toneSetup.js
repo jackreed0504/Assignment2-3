@@ -6,12 +6,14 @@ let players = new Tone.Players({
   urls: {
     zomer: "main_sound.wav",
     melLow: "drums.wav",
+    // keys: "main_sound.wav"
   },
   baseUrl: "./assets/audioSamples/",
 });
 
 players.player("zomer").loop = true;
 players.player("melLow").loop = true;
+// players.player("keys").loop = true;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// Audio Effects
@@ -45,9 +47,6 @@ function toneInit() {
   // The sampler above must be uncommented for this to work, as well as the declaration on line 3 of keyboardController.js
   players.chain(filter, reverb, delay, distortion, meter, Tone.Destination);
 
-  players.player("zomer").start();
-  players.player("melLow").start();
-
   toggleReverb(false);
 
   let verbOn = false;
@@ -65,6 +64,10 @@ function toneInit() {
     delayOn = !delayOn;
     toggleDelay(delayOn);
   });
+
+  players.player("zomer").start();
+  players.player("melLow").start();
+  // players.player("keys").start();
 
   //  Tone.Transport.start();
   Tone.start();
