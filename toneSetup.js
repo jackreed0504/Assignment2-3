@@ -4,8 +4,8 @@
 
 let players = new Tone.Players({
   urls: {
-    zomer: "main_sound.mp3",
-    melLow: "drums.mp3",
+    zomer: "main_sound.wav",
+    melLow: "drums.wav",
   },
   baseUrl: "./assets/audioSamples/",
 });
@@ -22,7 +22,7 @@ const filter = new Tone.Filter(20000, "lowpass");
 const distortion = new Tone.Distortion(0);
 
 const delay = new Tone.FeedbackDelay({
-  delayTime: "7n",
+  delayTime: "8n",
   feedback: 0.1,
   wet: 0,
 });
