@@ -5,7 +5,7 @@
 let randomNum = 0;
 
 function getRandomInt() {
-  randomNum = Math.floor(Math.random() * 6);
+  randomNum = Math.floor(Math.random() * 7);
 }
 
 getRandomInt();
