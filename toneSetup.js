@@ -1,4 +1,18 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////// Randomness variables
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+let randomNum = 0;
+
+function getRandomInt() {
+  randomNum = Math.floor(Math.random() * 6);
+}
+
+getRandomInt();
+
+console.log(randomNum);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// Players
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -6,14 +20,14 @@ let players = new Tone.Players({
   urls: {
     zomer: "main_sound.wav",
     melLow: "drums.wav",
-    // keys: "main_sound.wav"
+    snare: `snare${randomNum}.wav`,
   },
   baseUrl: "./assets/audioSamples/",
 });
 
 players.player("zomer").loop = true;
 players.player("melLow").loop = true;
-// players.player("keys").loop = true;
+players.player("snare").loop = true;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// Audio Effects
@@ -54,20 +68,24 @@ function toneInit() {
   diamond.addEventListener("click", (e) => {
     verbOn = !verbOn;
     toggleReverb(verbOn);
+    toggleDiamondGlow(glow);
   });
 
   toggleDelay(false);
 
   let delayOn = false;
 
+  sphere.style.boxShadow = "none";
+
   sphere.addEventListener("click", (e) => {
     delayOn = !delayOn;
     toggleDelay(delayOn);
+    toggleSphereGlow(sphere);
   });
 
   players.player("zomer").start();
   players.player("melLow").start();
-  // players.player("keys").start();
+  players.player("snare").start();
 
   //  Tone.Transport.start();
   Tone.start();

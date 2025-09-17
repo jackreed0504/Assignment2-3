@@ -19,6 +19,8 @@ const diamond = document.querySelector(".dia-wrapper");
 
 const sphere = document.querySelector(".sphere");
 
+const glow = document.querySelector(".diamondGlow");
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// Volume Functions
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -69,20 +71,36 @@ function changeFilterQ(newFilterQ) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 $("#one").draggable({
+  scroll: false,
   axis: "y",
   drag: function (event, ui) {
     //let onePos = ui.position.top;
     //let chimesRangeValue = 10 - onePos / 40;
+    let onePos = ui.position.top;
+    if (onePos > 677) {
+      ui.position.top = 677;
+    }
+    if (onePos < -2) {
+      ui.position.top = -2;
+    }
     let chimesRangeValue =
-      12 - (ui.position.top / document.documentElement.scrollHeight) * 48;
+      12 - (onePos / document.documentElement.scrollHeight) * 48;
     // console.log("Current Y position:", chimesRangeValue);
     changeChimesVolume(chimesRangeValue);
+    console.log(ui.position.top);
   },
 });
 $("#two").draggable({
+  scroll: false,
   axis: "y",
   drag: function (event, ui) {
     let twoPos = ui.position.top;
+    if (twoPos > 677) {
+      ui.position.top = 677;
+    }
+    if (twoPos < -2) {
+      ui.position.top = -2;
+    }
     let filterValue =
       10000 - (ui.position.top / document.documentElement.scrollHeight) * 20000;
     console.log("Current Y position:", filterValue);
@@ -90,9 +108,16 @@ $("#two").draggable({
   },
 });
 $("#three").draggable({
+  scroll: false,
   axis: "y",
   drag: function (event, ui) {
     let threePos = ui.position.top;
+    if (threePos > 677) {
+      ui.position.top = 677;
+    }
+    if (threePos < -2) {
+      ui.position.top = -2;
+    }
     let melRangeValue =
       12 - (ui.position.top / document.documentElement.scrollHeight) * 48;
     // console.log("Current Y position:", chimesRangeValue);
@@ -233,3 +258,23 @@ function toggleReverb(verbOn) {
 //   verbOn = !verbOn;
 //   ToggleReverb(verbOn);
 // });
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////// Visual Functions
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function toggleDiamondGlow(glow) {
+  if (glow.style.visibility == "visible") {
+    glow.style.visibility = "hidden";
+  } else {
+    glow.style.visibility = "visible";
+  }
+}
+
+function toggleSphereGlow(sphereGlow) {
+  if (sphere.style.boxShadow == "none") {
+    sphere.style.boxShadow = "0 0 20px 10px rgba(255, 255, 255, 0.7)";
+  } else {
+    sphere.style.boxShadow = "none";
+  }
+}

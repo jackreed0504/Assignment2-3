@@ -53,6 +53,20 @@ button {
       scaleX(0.3) scaleZ(0.3);
   }
 }
+@keyframes glowAnimation {
+  0% {
+    transform: translateY(0) rotateY(140deg) rotateX(2deg) rotateZ(359deg)
+      scaleX(0.3) scaleZ(0.3);
+  }
+  50% {
+    transform: translateY(-20px) rotateY(180deg) rotateX(2deg) rotateZ(359deg)
+      scaleX(0.3) scaleZ(0.3);
+  }
+  100% {
+    transform: translateY(0) rotateY(220deg) rotateX(2deg) rotateZ(359deg)
+      scaleX(0.3) scaleZ(0.3);
+  }
+}
 @keyframes sphereAnimation {
   0% {
     transform: translateY(0);
@@ -83,6 +97,7 @@ button {
   background-image: radial-gradient(circle at 35% 30%, #6dc5e3, #8781bf);
   animation: sphereAnimation 8s infinite alternate;
   cursor: pointer;
+  box-shadow: none;
 }
 
 /* pillar faces */
@@ -189,4 +204,18 @@ button {
   position: absolute;
   left: 42.4rem;
   top: 30rem;
+}
+
+.diamondGlow {
+  visibility: hidden;
+  width: 700px;
+  height: 300px;
+  top: 16.7rem;
+  left: 0.5rem;
+  position: absolute;
+  /* border-radius: 50%; */
+  /* background-image: linear-gradient(#ffffff, #ffffff3a,#8781bf00, #8781bf00); */
+  animation: glowAnimation 6s infinite linear;
+  cursor: pointer;
+  z-index: -1;
 }
