@@ -35,8 +35,6 @@ players.player("snare").loop = true;
 
 const filter = new Tone.Filter(20000, "lowpass");
 
-const distortion = new Tone.Distortion(0);
-
 const delay = new Tone.FeedbackDelay({
   delayTime: "8n",
   feedback: 0.1,
@@ -44,9 +42,6 @@ const delay = new Tone.FeedbackDelay({
 });
 
 const reverb = new Tone.Reverb(2);
-
-const meter = new Tone.Meter();
-meter.smoothing = 0.1;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// Functions
@@ -59,7 +54,7 @@ function toneInit() {
   // polySynth.chain(filter, distortion, reverb, delay, meter, Tone.Destination);
   // This is an alternative statement if the sampler is instead chosen : the only difference is the variable name
   // The sampler above must be uncommented for this to work, as well as the declaration on line 3 of keyboardController.js
-  players.chain(filter, reverb, delay, distortion, meter, Tone.Destination);
+  players.chain(filter, reverb, delay, Tone.Destination);
 
   toggleReverb(false);
 
