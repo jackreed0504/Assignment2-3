@@ -37,6 +37,7 @@ button {
   position: absolute;
   transform-style: preserve-3d;
   transform: rotateX(-20deg) rotateY(45deg);
+  cursor: ns-resize;
 }
 
 @keyframes diamondAnimation {
@@ -55,16 +56,16 @@ button {
 }
 @keyframes glowAnimation {
   0% {
-    transform: translateY(0) rotateY(140deg) rotateX(2deg) rotateZ(359deg)
-      scaleX(0.3) scaleZ(0.3);
+    transform: translateY(0) rotateX(2deg) rotateZ(359deg) scaleX(0.3)
+      scaleZ(0.3);
   }
   50% {
-    transform: translateY(-20px) rotateY(180deg) rotateX(2deg) rotateZ(359deg)
-      scaleX(0.3) scaleZ(0.3);
+    transform: translateY(-20px) rotateX(2deg) rotateZ(359deg) scaleX(0.3)
+      scaleZ(0.3);
   }
   100% {
-    transform: translateY(0) rotateY(220deg) rotateX(2deg) rotateZ(359deg)
-      scaleX(0.3) scaleZ(0.3);
+    transform: translateY(0) rotateX(2deg) rotateZ(359deg) scaleX(0.3)
+      scaleZ(0.3);
   }
 }
 @keyframes sphereAnimation {
@@ -191,18 +192,19 @@ button {
 #one {
   position: absolute;
   top: 10rem;
-  left: 46.8rem;
+  left: 46.7%;
+  /* left: 46.8rem; */
 }
 
 #two {
   position: absolute;
-  left: 51.1rem;
+  left: 48.5rem;
   top: 20rem;
 }
 
 #three {
   position: absolute;
-  left: 42.4rem;
+  left: 39.7rem;
   top: 30rem;
 }
 

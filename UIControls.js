@@ -8,12 +8,9 @@ const delayFeedbackInput = document.getElementById("delayFeedbackInput");
 
 const meterOutput = document.getElementById("meterOutput");
 
-// const pillarWrapper = document.querySelectorAll(".pillar-wrapper");
 const pillarOne = document.getElementById("one");
 const pillarTwo = document.getElementById("two");
 const pillarThree = document.getElementById("three");
-
-console.log(pillarOne);
 
 const diamond = document.querySelector(".dia-wrapper");
 
@@ -41,28 +38,11 @@ function changeMelVolume(newMelVol) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// Filter Functions
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-let acceptedFilterTypes = ["lowpass", "highpass", "bandpass", "notch"];
-
-function changeFilterType(newFilterType) {
-  /* check to see if parameter matches one of the accepted types in the above array */
-  if (acceptedFilterTypes.includes(newFilterType)) {
-    filter.set({
-      type: newFilterType,
-    });
-  }
-}
 
 function changeFilterFreq(newFilterFreq) {
   /* check to see if parameter within expected range */
   if (newFilterFreq >= 0 && newFilterFreq < 20000) {
     filter.frequency.value = newFilterFreq;
-  }
-}
-
-function changeFilterQ(newFilterQ) {
-  /* check to see if parameter within expected range */
-  if (newFilterQ >= 0 && newFilterQ < 20) {
-    filter.Q.value = newFilterQ;
   }
 }
 
@@ -74,20 +54,10 @@ $("#one").draggable({
   scroll: false,
   axis: "y",
   drag: function (event, ui) {
-    //let onePos = ui.position.top;
-    //let chimesRangeValue = 10 - onePos / 40;
     let onePos = ui.position.top;
-    if (onePos > 677) {
-      ui.position.top = 677;
-    }
-    if (onePos < -2) {
-      ui.position.top = -2;
-    }
-    let chimesRangeValue =
-      12 - (onePos / document.documentElement.scrollHeight) * 48;
-    // console.log("Current Y position:", chimesRangeValue);
+    ui.position.top = clamp(onePos, -2, 677);
+    let chimesRangeValue = clamp(remapRange(onePos, -2, 677, 12, -12), -12, 12);
     changeChimesVolume(chimesRangeValue);
-    console.log(ui.position.top);
   },
 });
 $("#two").draggable({
@@ -95,15 +65,12 @@ $("#two").draggable({
   axis: "y",
   drag: function (event, ui) {
     let twoPos = ui.position.top;
-    if (twoPos > 677) {
-      ui.position.top = 677;
-    }
-    if (twoPos < -2) {
-      ui.position.top = -2;
-    }
-    let filterValue =
-      10000 - (ui.position.top / document.documentElement.scrollHeight) * 20000;
-    console.log("Current Y position:", filterValue);
+    ui.position.top = clamp(twoPos, -2, 677);
+    let filterValue = clamp(
+      remapRange(twoPos, -2, 677, 20000, 200),
+      200,
+      20000
+    );
     changeFilterFreq(filterValue);
   },
 });
@@ -112,15 +79,8 @@ $("#three").draggable({
   axis: "y",
   drag: function (event, ui) {
     let threePos = ui.position.top;
-    if (threePos > 677) {
-      ui.position.top = 677;
-    }
-    if (threePos < -2) {
-      ui.position.top = -2;
-    }
-    let melRangeValue =
-      12 - (ui.position.top / document.documentElement.scrollHeight) * 48;
-    // console.log("Current Y position:", chimesRangeValue);
+    ui.position.top = clamp(threePos, -2, 677);
+    let melRangeValue = clamp(remapRange(threePos, -2, 677, 12, -12), -12, 12);
     changeMelVolume(melRangeValue);
   },
 });
@@ -143,69 +103,8 @@ document.getElementById("dialogCloseButton").addEventListener("click", () => {
 introModal.addEventListener("close", toneInit);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////// Oscillator Functions
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-let acceptedOscTypes = ["fatsine", "fatsquare", "fatsawtooth", "fattriangle"];
-
-function changeOscillatorType(newOscType) {
-  /* check to see if parameter matches one of the accepted types in the above array */
-  if (acceptedOscTypes.includes(newOscType)) {
-    polySynth.set({
-      oscillator: { type: newOscType },
-    });
-  }
-}
-
-function changeDetuneSpread(newSpreadAmt) {
-  /* make sure parameter is an int : note this rounds DOWN */
-  let roundedSpread = Math.floor(newSpreadAmt);
-  polySynth.set({
-    oscillator: {
-      spread: roundedSpread,
-    },
-  });
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////// Amp Functions
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-function changeAmpAttack(newAttack) {
-  polySynth.set({
-    envelope: {
-      attack: newAttack,
-    },
-  });
-}
-function changeAmpDecay(newDecay) {
-  polySynth.set({
-    envelope: {
-      decay: newDecay,
-    },
-  });
-}
-function changeAmpSustain(newSustain) {
-  polySynth.set({
-    envelope: {
-      sustain: newSustain,
-    },
-  });
-}
-function changeAmpAttack(newRelease) {
-  polySynth.set({
-    envelope: {
-      release: newRelease,
-    },
-  });
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// Delay Functions
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-function changeDelayFeedback(newFeedbackAmt) {
-  delay.feedback.value = newFeedbackAmtk;
-}
 
 function toggleDelay(delayOn) {
   if (delayOn) {
@@ -216,48 +115,16 @@ function toggleDelay(delayOn) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////// Distortion Functions
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-function changeDistortionAmount(newDistAmt) {
-  /* check to see if parameter within expected range */
-  if (newDistAmt >= 0 && newDistAmt < 1) {
-    distortion.set({ distortion: newDistAmt });
-  }
-}
-
-function toggleDistortion(distortionOn) {
-  if (distortionOn) {
-    distortion.wet.value = 1;
-  } else {
-    distortion.wet.value = 0;
-  }
-}
-
-/* set initial amount and bypass it */
-changeDistortionAmount(0.9);
-toggleDistortion(false);
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// Reverb Functions
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function changeReverbDecay(newVerbDecayAmt) {
-  reverb.set({ decay: newVerbDecayAmt });
-}
-
 function toggleReverb(verbOn) {
   if (verbOn) {
-    reverb.wet.value = 0.5;
+    reverb.wet.value = 1;
   } else {
     reverb.wet.value = 0;
   }
 }
-
-// diamond.addEventListener('click', (e) => {
-//   verbOn = !verbOn;
-//   ToggleReverb(verbOn);
-// });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// Visual Functions
