@@ -79,14 +79,6 @@ button {
     transform: translateY(0);
   }
 }
-/* @keyframes turningAnimation {
-  from {
-    transform: rotateY(0deg) rotateX(2deg) rotateZ(359deg);
-  }
-  to {
-    transform: rotateY(360deg) rotateX(2deg) rotateZ(359deg);
-  }
-} */
 
 .sphere {
   width: 100px;
@@ -183,7 +175,6 @@ button {
   transform-style: preserve-3d;
   animation: diamondAnimation 6s infinite linear;
   transform: rotateY(300deg) rotateX(2deg) rotateZ(359deg) scaleX(0.1);
-  /* animation: turningAnimation 8s linear;   */
   left: 14.5rem;
 }
 
@@ -215,8 +206,6 @@ button {
   top: 16.7rem;
   left: 0.5rem;
   position: absolute;
-  /* border-radius: 50%; */
-  /* background-image: linear-gradient(#ffffff, #ffffff3a,#8781bf00, #8781bf00); */
   animation: glowAnimation 6s infinite linear;
   cursor: pointer;
   z-index: -1;
