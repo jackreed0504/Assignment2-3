@@ -92,7 +92,7 @@ button {
   width: 100px;
   height: 100px;
   top: 23rem;
-  left: 75rem;
+  left: 69.7rem;
   position: absolute;
   border-radius: 50%;
   background-image: radial-gradient(circle at 35% 30%, #6dc5e3, #8781bf);
@@ -184,7 +184,7 @@ button {
   animation: diamondAnimation 6s infinite linear;
   transform: rotateY(300deg) rotateX(2deg) rotateZ(359deg) scaleX(0.1);
   /* animation: turningAnimation 8s linear;   */
-  left: 15rem;
+  left: 14.5rem;
 }
 
 /* pillar positions */
