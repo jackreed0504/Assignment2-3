@@ -80,19 +80,6 @@ button {
   }
 }
 
-.sphere {
-  width: 100px;
-  height: 100px;
-  top: 23rem;
-  left: 69.7rem;
-  position: absolute;
-  border-radius: 50%;
-  background-image: radial-gradient(circle at 35% 30%, #6dc5e3, #8781bf);
-  animation: sphereAnimation 8s infinite alternate;
-  cursor: pointer;
-  box-shadow: none;
-}
-
 /* pillar faces */
 
 .face {
@@ -175,38 +162,71 @@ button {
   transform-style: preserve-3d;
   animation: diamondAnimation 6s infinite linear;
   transform: rotateY(300deg) rotateX(2deg) rotateZ(359deg) scaleX(0.1);
-  left: 14.5rem;
+  right: 85%;
+}
+
+.pil-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4.3rem;
 }
 
 /* pillar positions */
 
 #one {
-  position: absolute;
+  /* position: absolute; */
   top: 10rem;
-  left: 46.7%;
-  /* left: 46.8rem; */
+  /* left: 46.7%; */
+  transform: translate(1.1rem, 0);
 }
 
 #two {
-  position: absolute;
-  left: 48.5rem;
-  top: 20rem;
+  /* position: absolute; */
+  /* left: 48.5rem; */
+  top: 30rem;
+  transform: translate(1.2rem, 0);
+  /* transform: translate(-8.7rem, 0); */
 }
 
 #three {
-  position: absolute;
-  left: 39.7rem;
-  top: 30rem;
+  /* position: absolute;
+  left: 39.7rem; */
+  top: 20rem;
+  transform: translate(-11.9rem, 0);
 }
+
+/* #one, #two, #three {
+  transform: translate();
+} */
 
 .diamondGlow {
   visibility: hidden;
   width: 700px;
   height: 300px;
   top: 16.7rem;
-  left: 0.5rem;
+  left: 2.8%;
   position: absolute;
   animation: glowAnimation 6s infinite linear;
   cursor: pointer;
   z-index: -1;
 }
+
+.sphere {
+  width: 100px;
+  height: 100px;
+  top: 23rem;
+  left: 80%;
+  position: absolute;
+  border-radius: 50%;
+  background-image: radial-gradient(circle at 35% 30%, #6dc5e3, #8781bf);
+  animation: sphereAnimation 8s infinite alternate;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+/* #objectsWrapper {
+  display: flex;
+  justify-content: space-evenly;
+} */
