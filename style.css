@@ -2,6 +2,7 @@
 
 body {
   overflow-y: hidden;
+  overflow-x: hidden;
   min-height: 100vh;
   background-image: linear-gradient(#4cd3c8, #005767);
   margin: 0 auto;
