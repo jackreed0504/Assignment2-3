@@ -27,13 +27,13 @@ const dice = document.querySelector(".dice-wrapper");
 function changeChimesVolume(newChimesVol) {
   /* check to see if parameter within expected range */
   if (newChimesVol >= -12 && newChimesVol < 12) {
-    players.player("zomer").volume.value = newChimesVol;
+    players.player("keys").volume.value = newChimesVol;
   }
 }
 function changeMelVolume(newMelVol) {
   /* check to see if parameter within expected range */
   if (newMelVol >= -12 && newMelVol < 12) {
-    players.player("melLow").volume.value = newMelVol;
+    players.player("drums").volume.value = newMelVol;
     players.player("snare").volume.value = newMelVol;
   }
 }

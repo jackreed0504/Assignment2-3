@@ -18,15 +18,15 @@ getRandomInt();
 
 let players = new Tone.Players({
   urls: {
-    zomer: `sound${randomSound}.wav`,
-    melLow: `drums${randomDrums}.wav`,
+    keys: `sound${randomSound}.wav`,
+    drums: `drums${randomDrums}.wav`,
     snare: `snare${randomNum}.wav`,
   },
   baseUrl: "./assets/audioSamples/",
 });
 
-players.player("zomer").loop = true;
-players.player("melLow").loop = true;
+players.player("keys").loop = true;
+players.player("drums").loop = true;
 players.player("snare").loop = true;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -68,20 +68,20 @@ function toneInit() {
 
   dice.addEventListener("click", (e) => {
     getRandomInt();
-    players.player("zomer").stop();
-    players.player("melLow").stop();
+    players.player("keys").stop();
+    players.player("drums").stop();
     players.player("snare").stop();
     players
-      .player("zomer")
+      .player("keys")
       .load(`./assets/audioSamples/sound${randomSound}.wav`);
     players
-      .player("melLow")
+      .player("drums")
       .load(`./assets/audioSamples/drums${randomDrums}.wav`);
     players
       .player("snare")
       .load(`./assets/audioSamples/snare${randomSnare}.wav`);
-    players.player("zomer").start();
-    players.player("melLow").start();
+    players.player("keys").start();
+    players.player("drums").start();
     players.player("snare").start();
     dice.classList.add("dice-clicked");
     setTimeout(() => {
@@ -101,8 +101,8 @@ function toneInit() {
     toggleSphereGlow(sphere);
   });
 
-  players.player("zomer").start();
-  players.player("melLow").start();
+  players.player("keys").start();
+  players.player("drums").start();
   players.player("snare").start();
 
   //  Tone.Transport.start();
