@@ -18,7 +18,7 @@ const sphere = document.querySelector(".sphere");
 
 const glow = document.querySelector(".diamondGlow");
 
-const dice = document.querySelector(".dice-wrapper")
+const dice = document.querySelector(".dice-wrapper");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// Volume Functions
@@ -34,6 +34,7 @@ function changeMelVolume(newMelVol) {
   /* check to see if parameter within expected range */
   if (newMelVol >= -12 && newMelVol < 12) {
     players.player("melLow").volume.value = newMelVol;
+    players.player("snare").volume.value = newMelVol;
   }
 }
 

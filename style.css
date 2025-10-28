@@ -43,11 +43,11 @@ button {
   width: 100px;
   height: 100px;
   position: absolute;
-  transform-style: preserve-3d;
   cursor: pointer;
-  transform: rotateX(-20deg) rotateY(45deg);
   right: 4%;
   top: 79%;
+  transform: rotateX(-20deg) rotateY(45deg);
+  transform-style: preserve-3d;
 }
 
 .dice-clicked {
