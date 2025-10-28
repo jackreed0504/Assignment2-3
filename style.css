@@ -34,7 +34,7 @@ button {
 
 .pillar-container {
   width: 100px;
-  height: 900px;
+  height: 1800px;
   position: absolute;
   transform-style: preserve-3d;
   transform: rotateX(-20deg) rotateY(45deg);
