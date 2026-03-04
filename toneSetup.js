@@ -101,9 +101,11 @@ function toneInit() {
     toggleSphereGlow(sphere);
   });
 
-  players.player("keys").start();
-  players.player("drums").start();
-  players.player("snare").start();
+  onload: () => {
+    players.player("keys").start();
+    players.player("drums").start();
+    players.player("snare").start();
+  };
 
   //  Tone.Transport.start();
   Tone.start();
