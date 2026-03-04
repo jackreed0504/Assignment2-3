@@ -18,11 +18,11 @@ getRandomInt();
 
 let players = new Tone.Players({
   urls: {
-    keys: `sound${randomSound}.wav`,
-    drums: `drums${randomDrums}.wav`,
-    snare: `snare${randomNum}.wav`,
+    keys: `/assets/audioSamples/sound${randomSound}.wav`,
+    drums: `/assets/audioSamples/drums${randomDrums}.wav`,
+    snare: `/assets/audioSamples/snare${randomNum}.wav`,
   },
-  baseUrl: "./assets/audioSamples/",
+  // baseUrl: "./assets/audioSamples/",
 });
 
 players.player("keys").loop = true;
@@ -101,11 +101,9 @@ function toneInit() {
     toggleSphereGlow(sphere);
   });
 
-  onload: () => {
-    players.player("keys").start();
-    players.player("drums").start();
-    players.player("snare").start();
-  };
+  players.player("keys").start();
+  players.player("drums").start();
+  players.player("snare").start();
 
   //  Tone.Transport.start();
   Tone.start();
